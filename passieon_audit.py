@@ -191,7 +191,7 @@ def process_page(url, domain, depth):
     try:
         response = requests.get(
             url, timeout=REQUEST_TIMEOUT,
-            headers={"User-Agent": "Passieon-SEO-Crawler/2.0"},
+            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"},
             allow_redirects=True,
         )
     except requests.exceptions.RequestException as e:
