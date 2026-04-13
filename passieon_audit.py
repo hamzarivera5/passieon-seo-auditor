@@ -191,7 +191,7 @@ def process_page(url, domain, depth):
     try:
         response = requests.get(
             url, timeout=REQUEST_TIMEOUT,
-            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"},
+            headers={"User-Agent": "Passieon-SEO-Crawler/2.0"},
             allow_redirects=True,
         )
     except requests.exceptions.RequestException as e:
@@ -550,7 +550,8 @@ def crawl_site(start_url, workers=WORKERS, on_progress=None):
                     msg = f"[{crawled_count}] ({status}) {url}{issue_label}"
                     print(f"  {msg}")
                     if on_progress:
-                        on_progress(crawled_count, msg)
+                        remaining = len(to_visit)
+                        on_progress(crawled_count, remaining, msg)
 
                 except Exception as e:
                     print(f"  [{crawled_count}] FAILED: {url} - {e}")
